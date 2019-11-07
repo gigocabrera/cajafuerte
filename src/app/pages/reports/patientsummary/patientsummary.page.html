@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar [color]="hcolor">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Patient Summary Report</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-list-header color="light" class="ion-text-left">
+      Select a Patient
+    </ion-list-header>
+    <ion-item detail="true" *ngFor="let pat of patients" (click)="runReport(pat)">
+      <ion-icon slot="start" name="md-person" color="medium"></ion-icon>
+      <ion-label>{{ pat.lastname }}, {{ pat.firstname }} ({{ pat.dob | epochdate }})</ion-label>
+      <ion-note slot="end">
+        <div [ngClass]="{ colorGreen: pat.patientStatus === 'A', colorRed: pat.patientStatus === 'M', colorYellow: pat.patientStatus === 'P', bold: 1===1 }">
+          {{ pat.patientStatus }}
+        </div>
+      </ion-note>
+    </ion-item>
+  </ion-list>
+</ion-content>

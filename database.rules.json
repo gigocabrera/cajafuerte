@@ -1,0 +1,75 @@
+{
+  "rules": {
+    "vaults": {
+      "$vault_id": {
+        ".read": "root.child('users').child(auth.uid).child('vaultid').val() === $vault_id || root.child('users').child(auth.uid).child('role/admin').val() == true",
+        ".write": "root.child('users').child(auth.uid).child('vaultid').val() === $vault_id || root.child('users').child(auth.uid).child('role/admin').val() == true",
+        "accounts": {
+          "$account_id": {
+            ".indexOn": ["namelower"]
+          }
+        },
+        "photos": {
+          ".indexOn": ["key"]
+        }
+      }
+    },
+    "notifications": {
+      ".read": "auth != null && root.child('users').child(auth.uid).child('role/admin').val() == true",
+      ".write": "auth != null && root.child('users').child(auth.uid).child('role/admin').val() == true",
+      "$user_id": {
+        ".write": "auth != null && auth.uid == $user_id",
+        ".read": "auth != null && auth.uid == $user_id"
+      },
+      "admin": {
+        ".write": "auth != null"
+      }
+    },
+  	"users": {
+      ".read": "auth != null && root.child('users').child(auth.uid).child('role/admin').val() == true",
+      ".write": "auth != null && root.child('users').child(auth.uid).child('role/admin').val() == true",
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null && auth.uid === $uid",
+        "role": {
+          ".write": false
+        }
+      }
+    },
+    "menu": {
+      ".read": "auth != null",
+      ".write": "auth != null && root.child('users').child(auth.uid).child('role/admin').val() == true",
+        	"active": {
+            ".indexOn": ["category"]
+          },
+          "inactive": {
+            ".indexOn": ["category"]
+          },
+    },
+    "submenu": {
+      ".read": "auth != null",
+      ".write": "auth != null && root.child('users').child(auth.uid).child('role/admin').val() == true",
+      		"active": {
+            ".indexOn": ["category"]
+          },
+          "inactive": {
+            ".indexOn": ["category"]
+          },
+    },
+    "status": {
+      ".read": "auth != null && root.child('users').child(auth.uid).child('role/admin').val() == true",
+      ".write": "auth != null && root.child('users').child(auth.uid).child('role/admin').val() == true",
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null && auth.uid === $uid",
+        "role": {
+          ".write": false
+        }
+      }
+    },
+    "$other": {
+      ".read": "auth != null",
+      ".write": false
+    }
+	}
+}

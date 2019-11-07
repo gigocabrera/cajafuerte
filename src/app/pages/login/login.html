@@ -1,0 +1,31 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-title color="white">{{ 'LOGIN' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen>
+  <div class="login-wrap">
+    <div class="login-html">
+      <div class="login-form">
+        <div class="sign-in-htm">
+          <form #loginForm="ngForm" (submit)="login()">
+            <div class="group">
+              <ion-label position="floating">{{ 'EMAIL_LABEL' | translate }}</ion-label>
+              <ion-input type="email" class="input" [(ngModel)]="email" name="email" required></ion-input>
+            </div>
+            <div class="group">
+              <ion-label position="floating">{{ 'PASSWORD_LABEL' | translate }}</ion-label>
+              <ion-input type="password" class="input" [(ngModel)]="password" name="password" required></ion-input>
+            </div>
+            <div class="group">
+              <button ion-button class="button" color="primary" block>{{ 'LOGIN_BUTTON' | translate }}</button>
+            </div>
+          </form>
+        </div>
+        <div class="foot-lnk">
+          <ion-button expand="full" fill="clean" (click)="forgotPassword()" class="footer">{{ 'FORGOT_PASSWORD_BUTTON' | translate }}</ion-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

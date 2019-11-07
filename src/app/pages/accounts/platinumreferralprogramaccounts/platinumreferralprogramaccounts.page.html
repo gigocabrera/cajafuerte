@@ -1,0 +1,21 @@
+<ion-header>
+    <ion-toolbar [color]="hcolor">
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title>Platinum Referral Accounts</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-list-header color="light" class="ion-text-left">
+        Select a Platinum Referral Office
+      </ion-list-header>
+      <ion-virtual-scroll [items]="referrals" approxItemHeight="44px">
+        <ion-item detail="true" *virtualItem="let referral; let itemBounds = bounds;" (click)="detailsPage(referral)">
+          <ion-icon slot="start" name="md-ribbon" color="medium"></ion-icon>
+          <ion-label>{{ referral.company }}</ion-label>
+        </ion-item>
+      </ion-virtual-scroll>
+    </ion-list>
+  </ion-content>

@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="true"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{ 'LIST_MASTER_TITLE' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list lines="none">
+    <ion-list-header color="light" class="ion-text-left">
+      {{ 'WELCOME' | translate }} {{ authService.user.fullname }} 
+    </ion-list-header>    
+    <ion-card [hidden]="!(announcement | async)?.show" class="msg">
+      <ion-card-header>
+        <ion-card-title role="heading">{{ (announcement | async)?.title }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item detail="false">
+          <h2>{{ (announcement | async)?.message }}</h2>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+    <ion-card [hidden]="(announcement | async)?.show" *ngFor="let p of pages | async" ngClass="{{animation}}{{p.order}}">
+      <ion-card-content>
+        <ion-item detail="false" (click)="openPage(p)">
+          <ion-icon slot="start" name="{{p.icon}}" color="{{p.color}}"></ion-icon>
+          <h2>{{ p.title | translate }}</h2>
+          <ion-icon slot="end" name="arrow-forward" color="primary"></ion-icon>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+</ion-content>

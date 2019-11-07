@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar [color]="hcolor">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Clinical Referral Offices</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-list-header color="light" class="ion-text-left">
+      Select a Referral Office
+    </ion-list-header>
+    <ion-virtual-scroll [items]="referrals" approxItemHeight="44px">
+      <ion-item detail="true"  *virtualItem="let referral; let itemBounds = bounds;" (click)="detailsPage(referral)">
+        <ion-icon slot="start" name="md-business" color="medium"></ion-icon>
+        <ion-label>{{ referral.company }} ({{ referral.id }})</ion-label>
+      </ion-item>
+    </ion-virtual-scroll>
+  </ion-list>
+</ion-content>

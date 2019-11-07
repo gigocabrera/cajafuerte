@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>{{ 'PICK_LANGUAGE_TITLE' | translate }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss('')">
+          {{ 'CANCEL_TITLE' | translate }}
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-list-header color="light">
+      <ion-label>{{ 'PICK_OPTION' | translate }}</ion-label>
+    </ion-list-header>    
+    <ion-item detail="false" (click)="dismiss('en')">
+      <ion-icon slot="start" name="ios-flag" color="medium"></ion-icon>
+      <ion-label>English (en)</ion-label>
+    </ion-item>
+    <ion-item detail="false" (click)="dismiss('es')">
+      <ion-icon slot="start" name="ios-flag" color="medium"></ion-icon>
+      <ion-label>Español (es)</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

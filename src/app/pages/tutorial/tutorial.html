@@ -1,0 +1,20 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button color='white' (click)="startApp()" [hidden]="!showSkip">{{ 'TUTORIAL_SLIDE_NEXT' | translate }}</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen forceOverscroll="false">
+  <ion-slides #slides (ionSlideWillChange)="onSlideChangeStart($event)" pager="false">
+    <ion-slide>
+      <div class="divImage">
+        <i class="introGreen"><img src="assets/img/CajaFuerte-logo.png" class="slide-image"/></i>
+      </div>
+      <div class="divText">
+        <h2 class="slide-title app-title" innerHTML="{{ 'TUTORIAL_SLIDE1_TITLE' | translate }}"></h2>
+        <p innerHTML="{{ 'TUTORIAL_SLIDE1_DESCRIPTION' | translate }}"></p>
+      </div>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

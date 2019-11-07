@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Pending Patients</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-list>
+      <ion-list-header color="light" class="ion-text-left">
+        Pending patients for more than 2 weeks
+      </ion-list-header>
+      <ion-virtual-scroll [items]="patients" approxItemHeight="44px">
+        <ion-item detail="true" *virtualItem="let pat; let itemBounds = bounds;" (click)="runReport(pat)">
+          <ion-icon slot="start" name="md-contact" color="medium"></ion-icon>
+          <ion-label>{{ pat.lastname }}, {{ pat.firstname }} ({{ pat.dob | epochdate }})</ion-label>
+          <ion-note slot="end">
+            <div [ngClass]="{ colorGreen: pat.patientStatus === 'A', colorRed: pat.patientStatus === 'M', colorYellow: pat.patientStatus === 'P', bold: 1===1 }">
+              {{ pat.patientStatus }}
+            </div>
+          </ion-note>
+        </ion-item>
+      </ion-virtual-scroll>
+    </ion-list>
+  </ion-content>

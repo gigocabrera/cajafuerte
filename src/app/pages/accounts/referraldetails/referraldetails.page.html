@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-toolbar [color]="hcolor">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen forceOverscroll="false">
+  <ion-card [hidden]="!chartData">
+    <ion-card-header>
+      <ion-card-subtitle>Patient Referrals Past 12 Months</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #valueBarsCanvas></canvas>
+    </ion-card-content>
+  </ion-card>
+  <ion-list>
+    <ion-list-header color="light">
+      <ion-label>Details</ion-label>
+    </ion-list-header>
+    <ion-item detail="false">
+      <ion-label class="ionLabel">ID</ion-label>
+      <ion-label class="ionItem">{{ item.id }}</ion-label>
+    </ion-item>
+    <ion-item detail="false">
+      <ion-label class="ionLabel">Company</ion-label>
+      <ion-label class="ionItem">{{ item.company }}</ion-label>
+    </ion-item>
+    <ion-item detail="false">
+      <ion-label class="ionLabel">Name</ion-label>
+      <ion-label class="ionItem">{{ item.name }}</ion-label>
+    </ion-item>
+    <ion-item detail="false">
+      <ion-label class="ionLabel">Address</ion-label>
+      <ion-label class="ionItem">{{ item.address }}</ion-label>
+    </ion-item>
+    <ion-item detail="false">
+      <ion-label class="ionLabel">City</ion-label>
+      <ion-label class="ionItem">{{ item.city }}</ion-label>
+    </ion-item>
+    <ion-item detail="false">
+      <ion-label class="ionLabel">State</ion-label>
+      <ion-label class="ionItem">{{ item.state }}</ion-label>
+    </ion-item>
+    <ion-item detail="false">
+      <ion-label class="ionLabel">Zip</ion-label>
+      <ion-label class="ionItem">{{ item.zip }}</ion-label>
+    </ion-item>
+    <ion-item detail="false" (click)="call(item.phone)">
+      <ion-label class="ionLabel">Phone</ion-label>
+      <ion-label class="ionItem">{{ item.phone }}</ion-label>
+      <ion-icon slot="end" name="ios-call" color="medium"></ion-icon>
+    </ion-item>
+    <ion-item detail="false">
+      <ion-label class="ionLabel">Fax</ion-label>
+      <ion-label class="ionItem">{{ item.fax }}</ion-label>
+    </ion-item>
+    <ion-item detail="false" (click)="email(item.email)">
+      <ion-label class="ionLabel">Email</ion-label>
+      <ion-label class="ionItem">{{ item.email }}</ion-label>
+      <ion-icon slot="end" name="ios-mail" color="medium"></ion-icon>
+    </ion-item>
+    <ion-item detail="true">
+      <ion-label class="ionDetail"># Referrals Last 12 Weeks</ion-label>
+      <ion-note slot="end">{{ item.totalReferralsLast12Weeks }}</ion-note>
+    </ion-item>
+    <ion-item detail="true">
+      <ion-label class="ionDetail"># Referrals Last 12 Months</ion-label>
+      <ion-note slot="end">{{ item.totalReferralsLast12Months }}</ion-note>
+    </ion-item>
+    <ion-item detail="true">
+      <ion-label class="ionDetail">Total # of Referrals</ion-label>
+      <ion-note slot="end">{{ item.totalReferrals }}</ion-note>
+    </ion-item>
+    <ion-item detail="true">
+      <ion-label class="ionDetail">Last Referral Sent</ion-label>
+      <ion-note slot="end">{{ item.lastReferralSent }}</ion-note>
+    </ion-item>
+  </ion-list>
+  <ion-card [hidden]="!chartDataStatus">
+    <ion-card-header>
+      <ion-card-subtitle>Patient Referrals Past 12 Months by Status</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #valueBarsCanvas2></canvas>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

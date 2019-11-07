@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar [color]="hcolor">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title color="white">{{ 'PROFILE_TITLE' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="contact">
+  <ion-card>
+
+      <ion-card-content>
+          <img src="https://freeiconshop.com/wp-content/uploads/edd/person-outline-filled.png"/>
+          <h2>Luis Cabrera</h2>
+          <h3>Applications Architect</h3>
+      </ion-card-content>
+
+      <ion-list>
+
+        <ion-item detail="true">
+          <ion-icon slot="start" name="ios-call" color="medium"></ion-icon>
+          <ion-label position="floating">Call Office</ion-label>
+          <ion-input value='407-493-7081'></ion-input>
+        </ion-item>
+        
+      </ion-list>
+
+  </ion-card>
+
+</ion-content>

@@ -1,0 +1,55 @@
+<ion-header>
+    <ion-toolbar color="danger">
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title>Inactive Office Details</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-list-header color="light">
+        <ion-label>Details</ion-label>
+      </ion-list-header>
+      <ion-item detail="false">
+        <ion-label class="ionLabel">ID</ion-label>
+        <ion-label>{{ item.referrerId }}</ion-label>
+      </ion-item>
+      <ion-item detail="false">
+        <ion-label class="ionLabel">Company</ion-label>
+        <ion-label>{{ item.company }}</ion-label>
+      </ion-item>
+      <ion-item detail="false">
+        <ion-label class="ionLabel">Address</ion-label>
+        <ion-label>{{ item.address }}</ion-label>
+      </ion-item>
+      <ion-item detail="false">
+        <ion-label class="ionLabel">City</ion-label>
+        <ion-label>{{ item.city }}</ion-label>
+      </ion-item>
+      <ion-item detail="false">
+        <ion-label class="ionLabel">State</ion-label>
+        <ion-label>{{ item.state }}</ion-label>
+      </ion-item>
+      <ion-item detail="false">
+        <ion-label class="ionLabel">Zip</ion-label>
+        <ion-label>{{ item.zip }}</ion-label>
+      </ion-item>
+      <ion-item detail="false">
+          <ion-label class="ionLabel">Phone</ion-label>
+          <ion-label>{{ item.phone }}</ion-label>
+        </ion-item>
+      <ion-item detail="false">
+        <ion-label class="ionLabel">Territory</ion-label>
+        <ion-label>{{ item.territory }}</ion-label>
+      </ion-item>
+      <ion-item detail="false">
+        <ion-label class="ionLabel">Entry Date</ion-label>
+        <ion-label>{{ item.entryDate }}</ion-label>
+      </ion-item>
+      <ion-item detail="false">
+        <ion-label class="ionLabel">Sales Rep</ion-label>
+        <ion-label>{{ item.salesRep }}</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>

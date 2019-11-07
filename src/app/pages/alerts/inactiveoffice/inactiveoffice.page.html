@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Inactive Offices</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-list-header color="light" class="ion-text-left">
+      Offices with no referrals for more than 2 weeks
+    </ion-list-header>
+    <ion-virtual-scroll [items]="items" approxItemHeight="44px">
+      <ion-item detail="true" *virtualItem="let item; let itemBounds = bounds;" (click)="openItemDetails(item)">
+        <ion-icon slot="start" name="md-business" color="medium"></ion-icon>
+        <ion-label>{{ item.company }}</ion-label>
+        <ion-note slot="end">
+            {{ item.territory }}
+        </ion-note>
+      </ion-item>
+    </ion-virtual-scroll>
+  </ion-list>
+</ion-content>
