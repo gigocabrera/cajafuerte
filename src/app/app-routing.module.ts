@@ -11,7 +11,6 @@ const routes: Routes = [
   { path: 'login', loadChildren: './pages/login/login.module#LoginModule'},
   { path: 'loginauto', loadChildren: './pages/loginauto/loginauto.module#LoginAutoModule'},
   { path: 'logout', loadChildren: './pages/logout/logout.module#LogoutModule'},
-  { path: 'submenu/:catid', loadChildren: './pages/submenu/submenu.module#SubMenuModule', canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }},
   { path: 'about', loadChildren: './pages/about/about.module#AboutModule'},
   { path: 'touchid', loadChildren: './pages/touchid/touchid.module#TouchidModule', canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }},
   { path: 'personalprofile', loadChildren: './pages/personalprofile/personalprofile.module#PersonalprofileModule', canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }},
