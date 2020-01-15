@@ -59,6 +59,8 @@ export class MenuPage {
   openPage(item: any) {
     this.loadingService.showLoader();
     let page = this.pagesService.getPageReference(item.component);
+    console.log(page);
+    this.router.navigateByUrl(page);
   }
   
 }

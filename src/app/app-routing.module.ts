@@ -27,6 +27,10 @@ const routes: Routes = [
   { path: 'clinicalreferraloffices/:color', loadChildren: './pages/accounts/clinicalreferraloffices/clinicalreferraloffices.module#ClinicalreferralofficesPageModule', canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }},
   { path: 'platinumreferralprogramaccounts/:color', loadChildren: './pages/accounts/platinumreferralprogramaccounts/platinumreferralprogramaccounts.module#PlatinumreferralprogramaccountsPageModule', canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }},
   { path: 'referraldetails/:color/:refid', loadChildren: './pages/accounts/referraldetails/referraldetails.module#ReferraldetailsPageModule', canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }},
+  { path: 'passwords', loadChildren: './pages/passwords/passwords.module', canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }},
+  { path: 'driverlicenses', loadChildren: './pages/driver-licenses/driver-licenses.module', canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }},
+  { path: 'bankaccounts', loadChildren: './pages/bank-accounts/bank-accounts.module', canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }},
+  { path: 'creditcards', loadChildren: './pages/credit-cards/credit-cards.module', canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }},
   { path: '', redirectTo: '/tutorial', pathMatch: 'full'},
   { path: '**', redirectTo: '/tutorial' }
 ];

@@ -6,12 +6,6 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import * as firebase from 'firebase/app';
 import { FirebaseAuth } from '@angular/fire';
 
-// 1. Signed-in and using app (online)
-// 2. Signed-in but app is closed (offline)
-// 3. Signed-in but on a different browser tab (away)
-// 4. Signed-out but app is still opened (offline)
-// 5. Signed-out and app closed (offline)
-
 @Injectable({
   providedIn: 'root'
 })
@@ -48,12 +42,6 @@ export class AuthService {
   constructor(
     public afAuth: AngularFireAuth,
     public db: AngularFireDatabase) {
-
-      //this.updateOnUser().subscribe();
-      //this.updateOnDisconnect().subscribe();
-
-      //this.updateOnAway();
-
       //
       // instantiate firebase references
       //
@@ -73,7 +61,6 @@ export class AuthService {
         console.log(token);
       })
       this.userauth = afUser;
-      //this.setPresence('online');
     });
   }
 
@@ -84,7 +71,6 @@ export class AuthService {
   }
 
   async logout() {
-    //await this.setPresence('offline');
     await this.afAuth.auth.signOut();
   }
 
@@ -92,50 +78,9 @@ export class AuthService {
     return this.afAuth.authState.pipe(first()).toPromise();
   }
 
-  /* async setPresence(status: string) {
-    const user = await this.getUser();
-    if (user) {
-      return this.db.object('users/' + user.uid).update({ 'presence': status, lastsignin: this.timestamp });
-    }
-  } */
-
   get timestamp() {
     return firebase.database.ServerValue.TIMESTAMP;
   }
-
-  /* updateOnUser() {
-    const connection = this.db.object('.info/connected').valueChanges().pipe(
-      map(connected => connected ? 'online' : 'offline')
-    );
-    return this.afAuth.authState.pipe(
-      switchMap(user => user ? connection : of('offline')),
-      tap(status => this.setPresence(status))
-    )
-  } */
-
-  /* updateOnAway() {
-    document.onvisibilitychange = (e) => {
-      if (document.visibilityState === 'hidden') {
-        this.setPresence('away');
-      } else {
-        this.setPresence('online');
-      }
-    }
-  } */
-
-  /* updateOnDisconnect() {
-    return this.afAuth.authState.pipe(
-      tap(user => {
-        if (user) {
-          this.db.object('users/' + user.uid).query.ref.onDisconnect()
-            .update({
-              'presence': 'offline',
-              'lastsignin': this.timestamp
-          });
-        }
-      })
-    );
-  } */
 
   //
   // sign up - create user
