@@ -54,6 +54,18 @@
   align-items: center;
 }
 
+.divImageNoItemsFound {
+  width: 100px;
+  height: 100px;
+  font-size: 120px;
+  line-height: 38px;
+  color: #fff;
+  margin: 1% auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .divNoItemsFound {
   display: inline-block;
   text-align: center;
