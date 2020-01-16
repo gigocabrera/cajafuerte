@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
-
+import { TranslateModule } from "@ngx-translate/core";
 import { BankAccountsPageRoutingModule } from './bank-accounts-routing.module';
-
 import { BankAccountsPage } from './bank-accounts.page';
 
 @NgModule({
@@ -13,6 +11,7 @@ import { BankAccountsPage } from './bank-accounts.page';
     CommonModule,
     FormsModule,
     IonicModule,
+    TranslateModule,
     BankAccountsPageRoutingModule
   ],
   declarations: [BankAccountsPage]

@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
-
+import { TranslateModule } from "@ngx-translate/core";
 import { DriverLicensesPageRoutingModule } from './driver-licenses-routing.module';
-
 import { DriverLicensesPage } from './driver-licenses.page';
 
 @NgModule({
@@ -13,6 +11,7 @@ import { DriverLicensesPage } from './driver-licenses.page';
     CommonModule,
     FormsModule,
     IonicModule,
+    TranslateModule,
     DriverLicensesPageRoutingModule
   ],
   declarations: [DriverLicensesPage]

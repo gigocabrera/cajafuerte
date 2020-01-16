@@ -1,9 +1,18 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>CreditCards</ion-title>
+  <ion-toolbar [color]="hcolor">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'CC_LIST' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
-
+  <ion-list>
+    <ion-list-header color="light" class="ion-text-left">
+      Select a Credit Card
+    </ion-list-header>
+    <ion-item detail="true">
+      here
+    </ion-item>
+  </ion-list>
 </ion-content>
