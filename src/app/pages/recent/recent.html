@@ -17,7 +17,7 @@
       </ion-label >
     </ion-item-divider>
     <ion-item detail="true" *ngFor="let item of items | async" (click)="openItem(item)">
-      <ion-icon name="md-lock" color="medium" slot="start"></ion-icon>
+      <ion-icon name="md-alarm" color="medium" slot="start"></ion-icon>
       {{ item.name }}
     </ion-item>
   </ion-list>

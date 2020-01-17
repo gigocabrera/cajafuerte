@@ -27,10 +27,11 @@ const routes: Routes = [
   { path: 'clinicalreferraloffices/:color', loadChildren: './pages/accounts/clinicalreferraloffices/clinicalreferraloffices.module#ClinicalreferralofficesPageModule', canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }},
   { path: 'platinumreferralprogramaccounts/:color', loadChildren: './pages/accounts/platinumreferralprogramaccounts/platinumreferralprogramaccounts.module#PlatinumreferralprogramaccountsPageModule', canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }},
   { path: 'referraldetails/:color/:refid', loadChildren: './pages/accounts/referraldetails/referraldetails.module#ReferraldetailsPageModule', canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }},
-  { path: 'PasswordsPage/:color', loadChildren: './pages/passwords/passwords.module#PasswordsPagePageModule' },
-  { path: 'DriverLicensesPage/:color', loadChildren: './pages/driver-licenses/driver-licenses.module#DriverLicensesPageModule' },
-  { path: 'BankAccountsPage/:color', loadChildren: './pages/bank-accounts/bank-accounts.module#BankAccountsPageModule' },
-  { path: 'CreditCardsPage/:color', loadChildren: './pages/credit-cards/credit-cards.module#CreditCardsPageModule' },
+  { path: 'PasswordsPage/:color', loadChildren: './pages/passwords/passwords.module#PasswordsPagePageModule', canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }},
+  { path: 'DriverLicensesPage/:color', loadChildren: './pages/driver-licenses/driver-licenses.module#DriverLicensesPageModule', canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }},
+  { path: 'BankAccountsPage/:color', loadChildren: './pages/bank-accounts/bank-accounts.module#BankAccountsPageModule', canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }},
+  { path: 'CreditCardsPage/:color', loadChildren: './pages/credit-cards/credit-cards.module#CreditCardsPageModule', canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }},
+  { path: 'driver-license-edit/:color', loadChildren: './pages/driver-license-edit/driver-license-edit.module#DriverLicenseEditPageModule', canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }},
   { path: '', redirectTo: '/tutorial', pathMatch: 'full'},
   { path: '**', redirectTo: '/tutorial' }
 ];

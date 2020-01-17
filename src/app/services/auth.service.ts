@@ -301,8 +301,248 @@ export class AuthService {
 		}
   }
 
+  //
+  // IMAGES
+  //-----------------------------------------------------------------------
+  getImages(key) {
+    return this.db.list('/vaults/' + this.vaultUser.vaultid + '/photos', ref => ref.orderByChild('key').equalTo(key)).valueChanges();
+  }
+
+  deleteImage(licensekey, photo) {
+    this.vaultdata.child(this.user.vaultid + '/photos/' + photo.$key).remove();
+    var picRef = firebase.storage().refFromURL(photo.photourl);
+    picRef.delete().then(function() {
+      // File deleted successfully
+    }).catch(function(error) {
+      // Uh-oh, an error occurred!
+    });
+  }
+
+  deleteStorageImage(photo) {
+    var picRef = firebase.storage().refFromURL(photo.photourl);
+    picRef.delete().then(function() {
+      // File deleted successfully
+    }).catch(function(error) {
+      // Uh-oh, an error occurred!
+      console.log(error);
+    });
+  }
+
+  saveImage (imageString, key) {
+    this.uploadImage(imageString, '')
+    .then((snapshot: any) => 
+    {
+      this.vaultdata.child(this.user.vaultid + '/photos/').push({ 'photourl' : snapshot.downloadURL, 'key': key });
+    })
+  }
+
+  saveProfileImage (imageString, key) {
+    this.uploadImage(imageString, 'profilepicture.jpg')
+    .then((snapshot: any) => 
+    {
+      this.vaultdata.child(this.user.vaultid + '/photos/').push({ 'photourl' : snapshot.downloadURL, 'key': key });
+      this.userdata.child(this.userauth.uid).update({ 'profilepic' : snapshot.downloadURL });
+      this.user.displayName = this.user.displayName;
+      this.user.photoURL = snapshot.downloadURL;
+      //Luis - here
+      //this.updateUserProfile(this.user);
+    });
+  }
+
+  uploadImage(imageString, imageName) : Promise<any>
+  {
+    let dateName = this.timestamp + '.jpg',
+      storageRef: any,
+      parseUpload: any;
+    
+    let image = imageName === '' ? dateName : imageName;
+
+    return new Promise((resolve, reject) => {
+      storageRef = this.vaultpicdata.child(firebase.auth().currentUser.uid).child(image);
+      parseUpload = storageRef.putString(imageString, 'data_url');
+
+      parseUpload.on('state_changed', (_snapshot) => 
+      {
+        // We could log the progress here IF necessary
+        // console.log('snapshot progess ' + _snapshot);
+      },
+      (_err) => {
+        reject(_err);
+      },
+      (success) => {
+        resolve(parseUpload.snapshot);
+      });
+    });
+  }
+
+  updateEmailNode(newemail) {
+    this.userdata.child(this.userauth.uid).update({'email' : newemail});
+  }
+
+
   getFavorites() {
     return this.db.list('/vaults/' + this.vaultUser.vaultid + '/favorites/', ref => ref.orderByChild('dateCreated')).valueChanges();
+  }
+
+  //
+  // DRIVER LICENSES - IDs
+  //-----------------------------------------------------------------------  
+  getAllDriverLicenses() {
+    return this.db.list('/vaults/' + this.vaultUser.vaultid + '/driverlicenses', ref => ref.orderByChild('namelower')).valueChanges();
+  }
+  
+  getDriverLicense(key) {
+    return this.vaultdata.child(this.vaultUser.vaultid + '/driverlicenses/' + key);
+  }
+  
+  getDriverLicensePhotos(key) {
+    return this.vaultdata.child(this.vaultUser.vaultid + '/driverlicenses/' + key + '/photos/');
+  }
+
+  getDLKey() {
+    return this.vaultdata.child(this.vaultUser.vaultid + "/driverlicenses/").push().key;
+  }
+
+  deleteDriverLicense(item) {
+
+    // Delete recent items (if available)
+    this.vaultdata.child(this.vaultUser.vaultid + '/recent/' + item.recentid).remove();
+
+    // Get list of photos to delete from Storage
+    this.vaultdata.child(this.vaultUser.vaultid + '/photos').once('value', (photos) => { 
+      
+      photos.forEach( snapshot => {
+        let photo = snapshot.val();
+        let $key = snapshot.key;
+
+        // Get images for this particular item only
+        if (item.$key === photo.key) {
+          
+          // Delete image from storare
+          this.deleteStorageImage(photo);
+
+          // Delete photo ref
+          this.vaultdata.child(this.vaultUser.vaultid + '/photos/' + $key).remove();
+        }
+      })
+    });
+
+    // Delete DL
+    this.vaultdata.child(this.vaultUser.vaultid + '/driverlicenses/' + item.$key).remove();
+
+  }
+
+  updateDriverLicense(item, key) {
+    this.vaultdata.child(this.vaultUser.vaultid + '/driverlicenses/' + key).update({
+      name: item.name, 
+      namelower: item.namelower, 
+      number: item.number, 
+      issuedate: item.issuedate, 
+      expirationdate: item.expirationdate, 
+      state: item.state, 
+      notes: item.notes,
+      recentid: item.recentid
+    });
+  }
+
+  //
+  // BANK ACCOUNTS
+  //-----------------------------------------------------------------------  
+  getAllBankAccounts() {
+    return this.db.list('/vaults/' + this.vaultUser.vaultid + '/bankaccounts', ref => ref.orderByChild('namelower')).valueChanges();
+  }
+  
+  getBankAccount(key) {
+    return this.vaultdata.child(this.vaultUser.vaultid + '/bankaccounts/' + key);
+  }
+
+  getBankKey() {
+    return this.vaultdata.child(this.vaultUser.vaultid + "/bankaccounts/").push().key;
+  }
+
+  addBankAccount(item) {
+    this.vaultdata.child(this.vaultUser.vaultid + "/bankaccounts/").push(item);
+  }
+
+  deleteBankAccount(item) {
+    this.vaultdata.child(this.vaultUser.vaultid + '/bankaccounts/' + item.$key).remove();
+  }
+
+  updateBankAccount(item, key) {
+    this.vaultdata.child(this.vaultUser.vaultid + '/bankaccounts/' + key).update({
+      name: item.name, 
+      namelower: item.namelower, 
+      accounttype: item.accounttype,
+      number: item.number, 
+      routingnumber: item.routingnumber,
+      owner: item.owner, 
+      notes: item.notes,
+      recentid: item.recentid
+    });
+  }
+
+  //
+  // CREDIT CARDS
+  //----------------------------------------------------------------------- 
+  getAllCreditCards() {
+    return this.db.list('/vaults/' + this.vaultUser.vaultid + '/creditcards', ref => ref.orderByChild('namelower')).valueChanges();
+  }
+  
+  getCreditCard(key) {
+    return this.vaultdata.child(this.vaultUser.vaultid + '/creditcards/' + key);
+  }
+
+  getCCKey() {
+    return this.vaultdata.child(this.vaultUser.vaultid + "/creditcards/").push().key;
+  }
+
+  /* AddCreditCard(item) {
+    let key = this.vaultdata.child(this.vaultUser.vaultid + "/creditcards/").push().key;
+    this.updateCreditCard(item, key);
+    return key;
+  } */
+
+  deleteCreditCard(item) {
+
+    // Delete recent items (if available)
+    this.vaultdata.child(this.vaultUser.vaultid + '/recent/' + item.recentid).remove();
+    
+      // Get list of photos to delete from Storage
+      this.vaultdata.child(this.vaultUser.vaultid + '/photos').once('value', (photos) => { 
+        
+        photos.forEach( snapshot => {
+          let photo = snapshot.val();
+          let $key = snapshot.key;
+  
+          // Get images for this particular item only
+          if (item.$key === photo.key) {
+            
+            // Delete image from storare
+            this.deleteStorageImage(photo);
+  
+            // Delete photo ref
+            this.vaultdata.child(this.vaultUser.vaultid + '/photos/' + $key).remove();
+          }
+        })
+      });
+  
+      // Delete DL
+      this.vaultdata.child(this.vaultUser.vaultid + '/creditcards/' + item.$key).remove();
+      
+  }
+
+  updateCreditCard(item, key) {
+    this.vaultdata.child(this.vaultUser.vaultid + '/creditcards/' + key).update({
+      owner: item.owner, 
+      name: item.name, 
+      namelower: item.namelower, 
+      type: item.type,
+      number: item.number, 
+      expirationdate: item.expirationdate, 
+      cvv: item.cvv,
+      notes: item.notes,
+      recentid: item.recentid
+    });
   }
 
 }

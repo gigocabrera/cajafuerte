@@ -4,15 +4,31 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>{{ 'CC_LIST' | translate }}</ion-title>
+    <ion-buttons slot="end" (click)="addItem()">
+      <ion-icon name="md-add"></ion-icon>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-content>
   <ion-list>
-    <ion-list-header color="light" class="ion-text-left">
-      Select a Credit Card
-    </ion-list-header>
-    <ion-item detail="true">
-      here
+    <ion-item-divider color="light" sticky>
+      <ion-label>
+        {{ 'CC_SUBTITLE' | translate }}
+      </ion-label >
+    </ion-item-divider>
+    <ion-item detail="true" *ngFor="let item of items | async" (click)="openItem(item)">
+      <ion-icon name="md-card" color="medium" slot="start"></ion-icon>
+      {{ item.name }}
     </ion-item>
   </ion-list>
+  <div class="noitems" *ngIf="noitemsfound">
+    <div class="divImageNoItemsFound">
+      <ion-icon name="md-card"></ion-icon>
+    </div>
+    <div class="ion-padding">
+      <div class="divNoItemsFound">
+        <p innerHTML="{{ 'NO_ITEMS_FOUND_DESCRIPTION' | translate }}"></p>
+      </div>
+    </div>
+  </div>
 </ion-content>
