@@ -6,7 +6,7 @@ import { Tabs } from './tabs';
 const routes: Routes = [
   {path: 'tabs', component: Tabs, children: [
       {path: 'menu', children: [{path: '',loadChildren: '../menu/menu.module#MenuPageModule', canActivate: [AuthGuardService]}]},
-      {path: 'alerts', children: [{path: '', loadChildren: '../alerts/alertspage/alerts.module#AlertsPageModule', canActivate: [AuthGuardService]}]},
+      {path: 'recent', children: [{path: '', loadChildren: '../recent/recent.module#RecentModule', canActivate: [AuthGuardService]}]},
       {path: 'favorites', children: [{path: '', loadChildren: '../favorites/favorites.module#FavoritesModule', canActivate: [AuthGuardService]}]},
       {path: 'settings', children: [{path: '', loadChildren: '../settings/settings.module#SettingsModule', canActivate: [AuthGuardService]}]},
     ]

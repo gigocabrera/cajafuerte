@@ -1,22 +1,29 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar [color]="hcolor">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
     <ion-title>{{ 'FAVORITES_TITLE' | translate }}</ion-title>
-    <ion-buttons slot="end" (click)="deleteRecent()">
+    <ion-buttons slot="end" (click)="deleteList()">
       <ion-icon name="md-trash"></ion-icon>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-content>
   <ion-list>
-    <ion-item detail="true" *ngFor="let favorite of favArray" (click)="openItem(favorite)">
-      <ion-icon slot="start" name="apps" ></ion-icon>
-      <h2>{{ favorite.name }}</h2>
-      <ion-icon slot="end" name="arrow-forward" color="primary"></ion-icon>
+    <ion-item-divider color="light" sticky>
+      <ion-label>
+        {{ 'FAVORITES_LIST' | translate }}
+      </ion-label >
+    </ion-item-divider>
+    <ion-item detail="true" *ngFor="let item of items | async" (click)="openItem(item)">
+      <ion-icon name="md-star" color="medium" slot="start"></ion-icon>
+      {{ item.name }}
     </ion-item>
   </ion-list>
   <div class="noitems" *ngIf="noitemsfound">
     <div class="divImageNoItemsFound">
-      <ion-icon name="md-star" class="divImageNoItemsFound"></ion-icon>
+      <ion-icon name="md-alarm"></ion-icon>
     </div>
     <div class="ion-padding">
       <div class="divNoItemsFound">
