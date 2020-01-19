@@ -4,12 +4,14 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>{{ 'BANK_LIST' | translate }}</ion-title>
-    <ion-buttons slot="end" (click)="addItem()">
-      <ion-icon name="md-add"></ion-icon>
-    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-content>
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab-button (click)="addItem()" [color]="hcolor">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
   <ion-list>
     <ion-item-divider color="light" sticky>
       <ion-label>
@@ -18,7 +20,10 @@
     </ion-item-divider>
     <ion-item detail="true" *ngFor="let item of items | async" (click)="openItem(item)">
       <ion-icon name="md-business" color="medium" slot="start"></ion-icon>
-      {{ item.name }}
+      <div>
+        {{ item.name }}<br/>
+        <p class="smallText">Owner: {{ item.owner }}</p>
+      </div>
     </ion-item>
   </ion-list>
   <div class="noitems" *ngIf="noitemsfound">

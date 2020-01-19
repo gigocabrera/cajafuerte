@@ -219,14 +219,22 @@ export class AuthService {
     return this.db.list('/vaults/' + this.vaultUser.vaultid + '/recent/', ref => ref.orderByChild('dateCreated')).valueChanges();
   }
 
-  async deleteRecent() {
-    const user = await this.getUser();
-    this.vaultdata.child(user.uid + '/recent/').remove();
+  deleteRecent() {
+    this.vaultdata.child(this.vaultUser.vaultid + '/recent/').remove();
   }
 
   //
   // FAVORITES
   //-----------------------------------------------------------------------
+  
+  getFavorites() {
+    return this.db.list('/vaults/' + this.vaultUser.vaultid + '/favorites/', ref => ref.orderByChild('dateCreated')).valueChanges();
+  }
+
+  deleteFavorites() {
+    this.vaultdata.child(this.vaultUser.vaultid + '/favorites/').remove();
+  }
+
   async handleFavorites(sourcekey, account, component) {
 
     const user = await this.getUser();
@@ -273,11 +281,6 @@ export class AuthService {
 
     // Save Favorite item
     this.vaultdata.child(user.uid + '/favorites/' + favoriteKey + '/').update(favorite);
-  }
-
-  async deleteFavorites() {
-    const user = await this.getUser();
-    this.vaultdata.child(user.uid + '/favorites/').remove();
   }
 
   async deleteFavorite(sourcekey, favkey, component) {
@@ -377,11 +380,6 @@ export class AuthService {
 
   updateEmailNode(newemail) {
     this.userdata.child(this.userauth.uid).update({'email' : newemail});
-  }
-
-
-  getFavorites() {
-    return this.db.list('/vaults/' + this.vaultUser.vaultid + '/favorites/', ref => ref.orderByChild('dateCreated')).valueChanges();
   }
 
   //

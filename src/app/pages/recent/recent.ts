@@ -63,7 +63,6 @@ export class Recent {
   }
 
   doDelete() {
-    console.log('do the delete here');
-    //this.authService.deleteRecent();
+    this.authService.deleteRecent();
   }
 }

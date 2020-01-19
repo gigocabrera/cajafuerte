@@ -32,7 +32,7 @@ export class DriverLicensesPage {
   }
 
   addItem() {
-    
+    console.log('add item here');
   }
   
 }

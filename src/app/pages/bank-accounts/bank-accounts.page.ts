@@ -27,7 +27,7 @@ export class BankAccountsPage {
 
   ngOnInit() {
     this.hcolor = this.activatedRoute.snapshot.paramMap.get('color');
-    this.items = this.authService.getAllDriverLicenses();
+    this.items = this.authService.getAllBankAccounts();
     this.loadingService.hideLoader();
   }
 
