@@ -312,7 +312,7 @@ export class AuthService {
   }
 
   deleteImage(licensekey, photo) {
-    this.vaultdata.child(this.user.vaultid + '/photos/' + photo.$key).remove();
+    this.vaultdata.child(this.vaultUser.vaultid + '/photos/' + photo.$key).remove();
     var picRef = firebase.storage().refFromURL(photo.photourl);
     picRef.delete().then(function() {
       // File deleted successfully
@@ -335,7 +335,7 @@ export class AuthService {
     this.uploadImage(imageString, '')
     .then((snapshot: any) => 
     {
-      this.vaultdata.child(this.user.vaultid + '/photos/').push({ 'photourl' : snapshot.downloadURL, 'key': key });
+      this.vaultdata.child(this.vaultUser.vaultid + '/photos/').push({ 'photourl' : snapshot.downloadURL, 'key': key });
     })
   }
 
@@ -343,7 +343,7 @@ export class AuthService {
     this.uploadImage(imageString, 'profilepicture.jpg')
     .then((snapshot: any) => 
     {
-      this.vaultdata.child(this.user.vaultid + '/photos/').push({ 'photourl' : snapshot.downloadURL, 'key': key });
+      this.vaultdata.child(this.vaultUser.vaultid + '/photos/').push({ 'photourl' : snapshot.downloadURL, 'key': key });
       this.userdata.child(this.userauth.uid).update({ 'profilepic' : snapshot.downloadURL });
       this.user.displayName = this.user.displayName;
       this.user.photoURL = snapshot.downloadURL;
@@ -380,6 +380,46 @@ export class AuthService {
 
   updateEmailNode(newemail) {
     this.userdata.child(this.userauth.uid).update({'email' : newemail});
+  }
+
+  //
+  // ACCOUNTS - PASSWORDS
+  //-----------------------------------------------------------------------  
+  getAllAccounts() {
+    return this.vaultdata.child(this.vaultUser.vaultid + '/accounts').orderByChild('namelower');
+  }
+  
+  getAccount(key) {
+    return this.vaultdata.child(this.vaultUser.vaultid + '/accounts/' + key);
+  }
+
+  addAccount(item) {
+    this.vaultdata.child(this.vaultUser.vaultid + "/accounts/").push(item);
+  }
+
+  deleteAccount(item) {
+
+    // Delete recent item (if available)
+    this.vaultdata.child(this.vaultUser.vaultid + '/recent/' + item.recentid).remove();
+
+    // Delete favorite item (if available)
+    this.vaultdata.child(this.vaultUser.vaultid + '/favorites/' + item.favoriteid).remove();
+
+    // Delete account
+    this.vaultdata.child(this.vaultUser.vaultid + '/accounts/' + item.$key).remove();
+  }
+
+  updateAccount(item, key) {
+    this.vaultdata.child(this.vaultUser.vaultid + '/accounts/' + key).update({
+      name: item.name, 
+      namelower: item.namelower, 
+      site: item.site, 
+      number: item.number, 
+      username: item.username, 
+      password: item.password, 
+      description: item.description,
+      notes: item.notes
+    });
   }
 
   //
