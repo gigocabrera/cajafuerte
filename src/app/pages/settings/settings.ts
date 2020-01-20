@@ -58,7 +58,7 @@ export class Settings {
         this.values = values;
       });
 
-      this.user = authService.getUser();
+      this.user = authService.getUserData();
 
       this.platform.ready().then(() => {
         this.appVersion.getVersionNumber().then(ver => {
@@ -68,7 +68,7 @@ export class Settings {
         });
         if (this.platform.is('cordova')) {
           this.appRate.preferences.storeAppURL = {
-            ios: '1466484332'
+            ios: '1206710447'
           };
         }
       });
