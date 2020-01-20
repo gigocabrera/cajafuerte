@@ -60,7 +60,11 @@
     <ion-list-header color="light">
       <ion-label></ion-label>
     </ion-list-header>
-    <ion-item detail="true" (click)="writeReview()" lines="none">
+    <ion-item detail="true" (click)="openAboutPage()">
+      <ion-icon slot="start" name="pin" color="medium"></ion-icon>
+      <ion-label>{{ 'SETTINGS_ABOUT' | translate }}</ion-label>
+    </ion-item>
+    <ion-item detail="true" (click)="writeReview()">
       <ion-icon slot="start" name="heart-empty" color="danger"></ion-icon>
       <ion-label>{{ 'SETTINGS_SEND_LOVE' | translate }}</ion-label>
     </ion-item>

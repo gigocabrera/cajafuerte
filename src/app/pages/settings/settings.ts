@@ -133,6 +133,10 @@ export class Settings {
     }
   }
 
+  openPersonalProfile() {
+    this.router.navigateByUrl('personalprofile');
+  }
+
   openAboutPage() {
     this.router.navigateByUrl('about');
   }
