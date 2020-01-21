@@ -2,20 +2,27 @@ import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-pickanimation',
-  templateUrl: 'pickanimation.html',
-  styleUrls: ['pickanimation.scss'],
+  selector: 'app-changeemail',
+  templateUrl: 'changeemail.html',
+  styleUrls: ['changeemail.scss'],
 })
-export class PickAnimation {
+
+export class ChangeEmailPage { 
+
+  newemail: string = '';
 
   constructor(
     public modalController: ModalController
-    ) { }
-
+  ) {}
+  
+  changeEmail(newemail) {
+    this.modalController.dismiss(newemail);
+  }
+  
   dismiss(data) {
     this.modalController.dismiss({
       'result': data
     })
   }
-
+    
 }

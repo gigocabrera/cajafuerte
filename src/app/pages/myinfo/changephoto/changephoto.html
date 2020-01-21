@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" (click)="dismiss()">
+      {{ 'CANCEL_TITLE' | translate }}
+    </ion-buttons>
+    <ion-title>{{ 'TAKE_PHOTO' | translate }}</ion-title>
+    <ion-buttons slot="end" (click)="photoSource()">
+      <ion-icon name="md-camera"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class='picturebg'>
+  <img [src]="thisPic" width="100%" />
+</ion-content>
