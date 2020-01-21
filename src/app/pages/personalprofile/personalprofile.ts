@@ -1,17 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+import { AuthService } from '../../services/auth.service';
+import { UserService } from '../../services/user.service';
+import { LoadingService } from '../../services/loading.service';
 
 @Component({
   selector: 'app-personalprofile',
   templateUrl: 'personalprofile.html',
   styleUrls: ['personalprofile.scss'],
 })
-export class Personalprofile implements OnInit {
+export class Personalprofile {
 
-  hcolor: string = "primary";
+  public user = {};
   
-  constructor() { }
+  constructor(
+      private loadingService: LoadingService,
+      public authService: AuthService,
+      public userService: UserService
+  ) { }
 
   ngOnInit() {
+    this.user = this.authService.getUserData();
   }
 
 }

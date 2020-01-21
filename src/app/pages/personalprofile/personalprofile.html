@@ -1,30 +1,25 @@
 <ion-header>
-  <ion-toolbar [color]="hcolor">
+  <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title color="white">{{ 'PROFILE_TITLE' | translate }}</ion-title>
+    <ion-title>{{ 'PROFILE_TITLE' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content class="contact">
-  <ion-card>
-
-      <ion-card-content>
-          <img src="https://freeiconshop.com/wp-content/uploads/edd/person-outline-filled.png"/>
-          <h2>Luis Cabrera</h2>
-          <h3>Applications Architect</h3>
-      </ion-card-content>
-
-      <ion-list>
-
-        <ion-item detail="true">
-          <ion-icon slot="start" name="ios-call" color="medium"></ion-icon>
-          <ion-label position="floating">Call Office</ion-label>
-          <ion-input value='407-493-7081'></ion-input>
-        </ion-item>
-        
-      </ion-list>
-
+<ion-content>
+  <ion-card no-border>
+    <ion-card-content>
+      <img src="{{ user.photoURL }}" imageViewer class="fade-in-bottom1"/>
+      <h1 class="fade-in-bottom2">{{ user.displayName }}</h1>
+      <h2 class="fade-in-bottom3">{{ user.email }}</h2>
+    </ion-card-content>
   </ion-card>
-
+  <ion-list padding>
+    <ion-item (click)="changeName()">{{ 'CHANGE_NAME' | translate }}</ion-item>
+    <ion-item (click)="takePhotopage()">{{ 'CHANGE_PICTURE' | translate }}</ion-item>
+    <ion-item (click)="changeEmail()">{{ 'CHANGE_EMAIL' | translate }}</ion-item>
+    <ion-item (click)="changePassword()">{{ 'CHANGE_PASSWORD' | translate }}</ion-item>
+    <ion-item (click)="deleteAll()" class="AlertDanger"><span class="DeleteAll">{{ 'DELETE_ALL' | translate }}</span></ion-item>
+    <ion-item (click)="logout()">{{ 'LOGOUT_APP' | translate }}</ion-item>
+  </ion-list>
 </ion-content>
