@@ -80,6 +80,8 @@
   "SETTINGS_RESET_MSG": "Está seguro que quiere reiniciar los formularios? Cualquier cambio que haya hecho será perdido...",
   "SETTINGS_RESET_DONE": "Los formularios han sido reiniciados!",
   "SETTINGS_ANIMATION": "Animación de formularios",
+  "PICK_LANGUAGE_TITLE": "Escoja el lenguage",
+  "PICK_ANIMATION_TITLE": "Select la animación",
 
   "LIST_MASTER_TITLE": "Formularios",
 

@@ -16,7 +16,7 @@ export class ChangeEmailPage {
   ) {}
   
   changeEmail(newemail) {
-    this.modalController.dismiss(newemail);
+    this.dismiss(newemail);
   }
   
   dismiss(data) {

@@ -39,19 +39,8 @@ export class Personalprofile {
     await modal.present();
     const { data } = await modal.onDidDismiss();
     if (data.result) {
-      console.log(data.result);
       this.doChangeName(data);
     }
-  }
-
-  changePhoto() {
-    /* let modal = this.modalCtrl.create(TakePhotoPage, { source: 'PersonalProfilePage', key: '' });
-    modal.onDidDismiss((data: any[]) => {
-      if (data) {
-        //console.log(data);
-      }
-    });
-    modal.present(); */
   }
 
   async changeEmail() {
@@ -74,6 +63,16 @@ export class Personalprofile {
     if (data.result) {
       this.doChangePassword(data);
     }
+  }
+
+  changePhoto() {
+    /* let modal = this.modalCtrl.create(TakePhotoPage, { source: 'PersonalProfilePage', key: '' });
+    modal.onDidDismiss((data: any[]) => {
+      if (data) {
+        //console.log(data);
+      }
+    });
+    modal.present(); */
   }
 
   deleteAll() {
@@ -104,7 +103,7 @@ export class Personalprofile {
   }
 
   doChangeName(newname): void {
-    //this.authService.updateName(newname);
+    this.authService.updateName(newname);
   }
   
   doChangeEmail(newemail): void {
@@ -253,15 +252,6 @@ export class Personalprofile {
     }).catch((Error) => {
       console.log(Error);
     })
-  }
-
-  demoAccountAlert() {
-    /* let alert = this.alertCtrl.create({
-      title: 'OOOPS...',
-      subTitle: 'Not allowed on demo account!',
-      buttons: ['OK']
-    });
-    alert.present();*/
   }
 
 }

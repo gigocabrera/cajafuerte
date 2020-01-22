@@ -80,6 +80,8 @@
   "SETTINGS_RESET_MSG": "Are you sure you want to reset your forms? Any custom changes will be lost...",
   "SETTINGS_RESET_DONE": "The forms have been reset!",
   "SETTINGS_ANIMATION": "Forms Animation",
+  "PICK_LANGUAGE_TITLE": "Select Language",
+  "PICK_ANIMATION_TITLE": "Select Animation",
 
   "LIST_MASTER_TITLE": "Forms",
 

@@ -100,6 +100,21 @@ export class AuthService {
     });
   }
 
+  updateName(newname: string) {
+    this.userdata.child(this.userauth.uid).update({'fullname' : newname});
+    this.user.fullname = newname;
+    this.user.displayName = newname;
+    this.user.photoURL = this.userauth.photoURL;
+    this.updateUserProfile(this.user); 
+  }
+
+  updateUserProfile(user) {
+    this.getUserData().updateProfile({
+      displayName: user.displayName ? user.displayName : user.email,
+      photoURL: user.photoURL ? user.photoURL : this.defaultAvatar
+    });
+  }
+
   //
   // sign up - create user
   //

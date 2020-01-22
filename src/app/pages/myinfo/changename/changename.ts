@@ -17,7 +17,7 @@ export class ChangeNamePage {
   ) {}
   
   changeName(newname) {
-    this.modalController.dismiss(newname);
+    this.dismiss(newname);
   }
   
   dismiss(data) {

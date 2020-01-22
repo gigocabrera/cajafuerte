@@ -16,7 +16,7 @@ export class ChangePasswordPage {
   ) {}
  
   changePassword(newpassword) {
-    this.modalController.dismiss(newpassword);
+    this.dismiss(newpassword);
   }
   
   dismiss(data) {
