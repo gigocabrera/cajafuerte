@@ -6,8 +6,8 @@ import { LoadingService } from '../../services/loading.service';
 
 @Component({
   selector: 'app-bank-accounts',
-  templateUrl: './bank-accounts.page.html',
-  styleUrls: ['./bank-accounts.page.scss'],
+  templateUrl: './bankaccounts.page.html',
+  styleUrls: ['./bankaccounts.page.scss'],
 })
 export class BankAccountsPage {
 
@@ -32,7 +32,12 @@ export class BankAccountsPage {
   }
 
   addItem() {
-    
+    this.router.navigateByUrl('BankAccountPage');
+  }
+
+  openItem(item) {
+    console.log(item);
+    this.router.navigateByUrl('BankAccountPage');
   }
   
 }
