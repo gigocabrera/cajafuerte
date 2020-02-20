@@ -14,6 +14,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
 import { environment } from 'src/environments/environment';
 import { TokenInterceptor } from '../app/interceptors/token.interceptor';
+import { ComponentsModule } from './components/components.module';
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -31,6 +32,7 @@ export function httpTranslateLoader(http: HttpClient) {
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     HttpClientModule,
+    ComponentsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

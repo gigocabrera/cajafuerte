@@ -68,10 +68,6 @@ export class LoginPage implements OnInit {
       this.loginForm.handleError(error);
     }
   }
-
-  test() {
-    this.router.navigateByUrl('tabs');
-  }
   
   login() {
     //
@@ -117,7 +113,7 @@ export class LoginPage implements OnInit {
   }
 
   openMenuPage() {
-    this.router.navigateByUrl('/app/tabs/menu');
+    this.router.navigateByUrl('/app/tabs/tab1');
   }
 
   inputIsValid(): boolean {
