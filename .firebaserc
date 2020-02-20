@@ -1,5 +1,11 @@
 {
-  "projects": {
-    "default": "cajafuerte"
+  "targets": {
+    "cajafuerte-2fbfb": {
+      "hosting": {
+        "app": [
+          "cajafuerte-2fbfb"
+        ]
+      }
+    }
   }
 }

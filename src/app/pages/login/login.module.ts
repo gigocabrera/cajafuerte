@@ -1,32 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule, HttpClient} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
-import { TranslateModule } from "@ngx-translate/core";
-import { LoginPage } from './login';
 import { LoginPageRoutingModule } from './login-routing.module';
-import { IonicStorageModule } from '@ionic/storage';
-
-const routes: Routes = [
-  {
-    path: '',
-    component: LoginPage
-  }
-];
+import { LoginPage } from './login.page';
+import { TranslateModule } from "@ngx-translate/core";
+import { AuthModule } from 'src/app/shared-modules/auth.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    IonicStorageModule.forRoot(),
     LoginPageRoutingModule,
     TranslateModule,
-    RouterModule.forChild(routes)
+    AuthModule
   ],
-  declarations: [LoginPage],
-  entryComponents: [LoginPage]
+  declarations: [LoginPage]
 })
-export class LoginModule {}
+export class LoginPageModule {}

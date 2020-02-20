@@ -1,6 +1,6 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Config } from '@ionic/angular';
-import { Storage } from '@ionic/storage';
+//import { Storage } from '@ionic/storage';
 import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
@@ -19,49 +19,48 @@ export class UserService {
 
   constructor(
     public config: Config,
-    public storage: Storage,
     public translate: TranslateService) {}
 
   getLanguage() {
-    return this.storage.get('language').then((val) => {
+    /* return this.storage.get('language').then((val) => {
       this.currentLang = val;
       return this.currentLang;
-    });
+    }); */
   }
 
   getAnimation() {
-    return this.storage.get('animation').then((val) => {
+    /* return this.storage.get('animation').then((val) => {
       if (val != null) {
         this.animation = val;
       }
       return this.animation;
-    });
+    }); */
   }
 
   getKeepmesignedin() {
-    return this.storage.get('keepmesignedin').then((val) => {
+    /* return this.storage.get('keepmesignedin').then((val) => {
       this.keepmesignedin = val;
       return this.keepmesignedin;
-    });
+    }); */
   }
 
   // add event
   public onLangChanged: EventEmitter<string> = new EventEmitter<string>();
 
   useLanguage(lang: string) : void {
-    this.currentLang = lang;
+    /* this.currentLang = lang;
     this.storage.set('language', lang);
-    this.onLangChanged.emit(lang);
+    this.onLangChanged.emit(lang); */
   }
 
   useKeepmesignedin(keep: boolean) : void {
-    this.keepmesignedin = keep;
-    this.storage.set('keepmesignedin', keep);
+    /* this.keepmesignedin = keep;
+    this.storage.set('keepmesignedin', keep); */
   }
 
   useAnimation(animation: string) : void {
-    this.animation = animation;
-    this.storage.set('animation', animation);
+    /* this.animation = animation;
+    this.storage.set('animation', animation); */
   }
   
   refreshConfig() {

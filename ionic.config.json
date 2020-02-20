@@ -1,7 +1,5 @@
 {
-  "name": "cajafuerte",
-  "integrations": {
-    "cordova": {}
-  },
+  "name": "CajaFuerte",
+  "integrations": {},
   "type": "angular"
 }
