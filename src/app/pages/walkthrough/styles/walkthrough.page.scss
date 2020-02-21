@@ -220,3 +220,42 @@ ion-content {
     }
   }
 }
+
+.introGreen {
+  background-color: #28a54c;
+}
+.divImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.divText {
+  display: inline-block;
+}
+.divImage i {
+  width: 175px;
+  height: 175px;
+  border: 5px solid #fff;
+  border-radius: 100%;
+  font-size: 120px;
+  line-height: 38px;
+  color: #fff;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+h2.slide-title {
+  color: #000;
+  font: 40px 'PT Sans Narrow';
+  font-weight: bolder;
+}
+h2.app-title {
+  font: 60px 'PT Sans Narrow';
+  font-weight: bolder;
+}
+.slide-image {
+  max-height: 50%;
+  max-width: 60%;
+  margin: 36px 0;
+}

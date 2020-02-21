@@ -11,9 +11,13 @@
     <ion-slide class="first-slide illustration-and-decoration-slide">
       <ion-row class="slide-inner-row">
         <ion-col class="illustration-col">
-          <app-aspect-ratio [ratio]="{w:915, h:849}">
-            <app-image-shell class="illustration-image" animation="spinner" [src]="'./assets/img/walkthrough/walkthrough-illustration-1.svg'" [alt]="'walkthrough'"></app-image-shell>
-          </app-aspect-ratio>
+          <div class="divImage">
+            <i class="introGreen">
+              <app-aspect-ratio [ratio]="{w:915, h:849}">
+                <app-image-shell class="illustration-image" animation="spinner" [src]="'./assets/img/CajaFuerte-logo.png'" [alt]="'walkthrough'"></app-image-shell>
+              </app-aspect-ratio>
+            </i>
+          </div>
         </ion-col>
         <ion-col class="decoration-col">
           <!-- http://jxnblk.com/paths/?d=M0%200%20V5%20H5%20C25%205%2025%2020%2045%2020%20S65%205%2085%205%20H90%20V0%20Z -->
@@ -23,7 +27,10 @@
         </ion-col>
         <ion-col class="info-col">
           <div class="info-wrapper">
-            <h3 class="info-title">This App is built with Ionic 5</h3>
+            <div class="divText">
+              <h2 class="slide-title app-title" innerHTML="{{ 'TUTORIAL_SLIDE1_TITLE' | translate }}"></h2>
+              <p innerHTML="{{ 'TUTORIAL_SLIDE1_DESCRIPTION' | translate }}"></p>
+            </div>
             <p class="info-paragraph">
               It was created by the <b>IonicThemes</b> team to help you jump start your Ionic app development.
             </p>

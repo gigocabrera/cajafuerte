@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { WalkthroughPageRoutingModule } from './walkthrough-routing.module';
 import { WalkthroughPage } from './walkthrough.page';
 import { ComponentsModule } from '../../components/components.module';
+import { TranslateModule } from "@ngx-translate/core";
 
 @NgModule({
   imports: [
@@ -12,7 +13,8 @@ import { ComponentsModule } from '../../components/components.module';
     FormsModule,
     IonicModule,
     WalkthroughPageRoutingModule,
-    ComponentsModule
+    ComponentsModule,
+    TranslateModule
   ],
   declarations: [WalkthroughPage]
 })

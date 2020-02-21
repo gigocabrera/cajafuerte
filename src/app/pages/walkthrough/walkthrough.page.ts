@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit, ViewChild, HostBinding } from '@angular/core';
 import { IonSlides, MenuController } from '@ionic/angular';
+import { TranslateService } from "@ngx-translate/core";
 
 @Component({
   selector: 'app-walkthrough',
@@ -23,7 +24,10 @@ export class WalkthroughPage implements OnInit, AfterViewInit {
 
   @HostBinding('class.last-slide-active') isLastSlide = false;
 
-  constructor(public menu: MenuController) { }
+  constructor(
+    public menu: MenuController,
+    public translate: TranslateService
+  ) { }
 
   ngOnInit(): void {
     this.menu.enable(false);
