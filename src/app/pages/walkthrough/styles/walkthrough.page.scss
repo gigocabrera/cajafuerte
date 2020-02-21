@@ -222,7 +222,7 @@ ion-content {
 }
 
 .introGreen {
-  background-color: #28a54c;
+  background-color: #006393;
 }
 .divImage {
   display: flex;
@@ -245,6 +245,11 @@ ion-content {
   justify-content: center;
   align-items: center;
 }
+.slide-image {
+  max-height: 50%;
+  max-width: 60%;
+  margin: 36px 0;
+}
 h2.slide-title {
   color: #000;
   font: 40px 'PT Sans Narrow';
@@ -253,9 +258,4 @@ h2.slide-title {
 h2.app-title {
   font: 60px 'PT Sans Narrow';
   font-weight: bolder;
-}
-.slide-image {
-  max-height: 50%;
-  max-width: 60%;
-  margin: 36px 0;
 }
