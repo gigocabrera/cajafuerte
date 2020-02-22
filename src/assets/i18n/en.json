@@ -30,17 +30,18 @@
   "TUTORIAL_SLIDE3_DESCRIPTION": "Your information is protected by Google",
   "TUTORIAL_SLIDE3_PARAGRAPH": "CajaFuerte is extremely easy to use and manage your electronic information, whereever you happen to be!",
 
-  "TUTORIAL_SLIDE4_TITLE": "It's time to start",
+  "TUTORIAL_SLIDE4_TITLE": "Give it a try!",
   "TUTORIAL_SLIDE4_DESCRIPTION": "It's time to start ",
-  "TUTORIAL_SLIDE4_PARAGRAPH": "I hope you like CajaFuerte",
+  "TUTORIAL_SLIDE4_PARAGRAPH": "You're gonna love CajaFuerte",
 
   "TUTORIAL_SLIDE_NEXT": "Skip",
 
   "WELCOME_TITLE": "Welcome to CajaFuerte",
   "WELCOME_SUBTITLE": "Personal Information Manager",
   
-  "LOGIN": "Sign in",
-  "SIGNUP": "Sign up",
+  "LOGIN": "Login",
+  "LOGIN_HERE": "Login Here",
+  "SIGNUP": "Register Here",
   
   "LOGIN_TITLE": "Sign in",
   "LOGIN_SUBTITLE": "Enter your credentials",
@@ -61,6 +62,9 @@
   "PASSWORD_LABEL": "Password",
   "CONFIRM_PASSWORD_LABEL": "Confirm Password",
   "FORGOT_PASSWORD_BUTTON": "Forgot Password?",
+
+  "ALREADY_HAVE_AN_ACCOUNT": "Already have an account?",
+  "GET_STARTED": "Get Started",
 
   "SIGNUP_TITLE": "Sign up",
   "SIGNUP_SUBTITLE": "Enter your information",

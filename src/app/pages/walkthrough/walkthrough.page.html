@@ -64,7 +64,7 @@
       <ion-row class="slide-inner-row">
         <ion-col class="illustration-col">
           <app-aspect-ratio [ratio]="{w:915, h:849}">
-            <img src="assets/img/security.png" class="slide-image"/>
+            <img src="assets/img/extremely_secured.png" class="slide-image"/>
           </app-aspect-ratio>
         </ion-col>
         <ion-col class="decoration-col">
@@ -102,17 +102,15 @@
             <ion-col>
               <div class="info-wrapper">
                 <h2 class="slide-title" innerHTML="{{ 'TUTORIAL_SLIDE4_TITLE' | translate }}"></h2>
-                <p class="info-paragraph">
-                  Hope you like this Ionic 5 template and please let us know your feedback so we can keep improving it! Enjoy ;)
-                </p>
+                <p class="info-paragraph" innerHTML="{{ 'TUTORIAL_SLIDE4_PARAGRAPH' | translate }}"></p>
               </div>
             </ion-col>
             <ion-col class="call-to-actions-wrapper">
-              <ion-button class="get-started-button" expand="block" [routerLink]="['/getting-started']">Get Started</ion-button>
+              <ion-button class="get-started-button" expand="block" [routerLink]="['/getting-started']">{{ 'GET_STARTED' | translate }}</ion-button>
               <ion-row class="alt-call-to-action-row">
-                <span class="cta-leading-text">Already have an account?</span>
+                <span class="cta-leading-text">{{ 'ALREADY_HAVE_AN_ACCOUNT' | translate }}</span>
                 <ion-button class="login-button" fill="clear" [routerLink]="['/login']">
-                  Login here
+                  {{ 'LOGIN_HERE' | translate }}
                 </ion-button>
               </ion-row>
             </ion-col>
