@@ -22,7 +22,19 @@
   
   "TUTORIAL_SLIDE1_TITLE": "CajaFuerte",
   "TUTORIAL_SLIDE1_DESCRIPTION": "Personal Information Manager",
-  "TUTORIAL_SLIDE_NEXT": "Next",
+  "TUTORIAL_SLIDE1_PARAGRAPH": "Securely manage your electronic information like passwords, drivers license, bank accounts etc.",
+  "TUTORIAL_SLIDE2_TITLE": "Easy to Use",
+  "TUTORIAL_SLIDE2_DESCRIPTION": "Easy access with Face ID or Touch ID",
+  "TUTORIAL_SLIDE2_PARAGRAPH": "CajaFuerte is extremely easy to use and manage your electronic information, whereever you happen to be!",
+  "TUTORIAL_SLIDE3_TITLE": "Extremely Secured!",
+  "TUTORIAL_SLIDE3_DESCRIPTION": "Your information is protected by Google",
+  "TUTORIAL_SLIDE3_PARAGRAPH": "CajaFuerte is extremely easy to use and manage your electronic information, whereever you happen to be!",
+
+  "TUTORIAL_SLIDE4_TITLE": "It's time to start",
+  "TUTORIAL_SLIDE4_DESCRIPTION": "It's time to start ",
+  "TUTORIAL_SLIDE4_PARAGRAPH": "I hope you like CajaFuerte",
+
+  "TUTORIAL_SLIDE_NEXT": "Skip",
 
   "WELCOME_TITLE": "Welcome to CajaFuerte",
   "WELCOME_SUBTITLE": "Personal Information Manager",
