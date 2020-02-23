@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { AlertController, MenuController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from '../../services/auth.service';
-import { AuthFormComponent } from 'src/app/components/auth-form/auth-form.component';
+import { LoadingService } from '../../services/loading.service';
 import { UserCredential } from 'src/app/models/user';
 
 @Component({
@@ -19,14 +19,13 @@ export class LoginPage implements OnInit {
   errorMessage: string;
   errorTitle: string;
 
-  @ViewChild(AuthFormComponent) loginForm: AuthFormComponent;
-
   constructor(
     public router: Router,
     public menuController: MenuController,
     public translate: TranslateService,
     public alertController: AlertController,
-    public authService: AuthService
+    public authService: AuthService,
+    public loadingService: LoadingService
   ) {
 
     this.translate.get([
@@ -43,8 +42,6 @@ export class LoginPage implements OnInit {
       this.errorTitle = values.LOGIN_ERROR_TITLE;
     });
 
-    //this.authService.logout();
-
    }
 
   ngOnInit() {
@@ -52,21 +49,6 @@ export class LoginPage implements OnInit {
 
   ionViewDidEnter() {
     this.menuController.enable(false);
-  }
-
-  async loginUser(credentials: UserCredential): Promise<void> {
-    try {
-      const userCredential: firebase.auth.UserCredential = await this.authService.login(
-        credentials.email,
-        credentials.password
-      );
-      this.authService.userId = userCredential.user.uid;
-      await this.loginForm.hideLoading();
-      this.router.navigateByUrl('tabs');
-    } catch (error) {
-      await this.loginForm.hideLoading();
-      this.loginForm.handleError(error);
-    }
   }
   
   login() {
@@ -77,7 +59,7 @@ export class LoginPage implements OnInit {
     }
     //
     // load loading controller and wait before authenticating
-    //this.loadingService.showLoader();
+    this.loadingService.showLoader();
     //
     // authenticate user
     this.authService.login(this.email, this.password)
@@ -86,7 +68,7 @@ export class LoginPage implements OnInit {
     }, error => {
       console.log(error);
       setTimeout(() => {
-        //this.loadingService.hideLoader();
+        this.loadingService.hideLoader();
       }, 300);
       this.ValidationError(this.errorTitle, this.errorMessage);
     });
