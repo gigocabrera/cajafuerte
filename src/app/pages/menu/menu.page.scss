@@ -1,0 +1,32 @@
+ion-content {
+  --ion-background-color: #efeff4;
+}
+ion-card-content {
+  padding: 0;
+}
+ion-icon {
+  margin-right: 10px; 
+}
+ion-card {
+  margin: 13px;
+  --ion-item-background: #fff;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  .item {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  h2 {
+    /* font: 20px 'PT Sans Narrow'; */
+    font-weight: normal;
+  }
+}
+.msg {
+  --ion-item-background: var(--ion-color-danger);
+  ion-card-title {
+    color: #fff;
+  }
+  h2 {
+    color: #fff;
+  }
+}
