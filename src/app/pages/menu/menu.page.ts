@@ -34,7 +34,7 @@ export class MenuPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    //this.pages = this.authService.getMenu();
+    this.pages = this.authService.getMenu();
     //this.announcement = this.authService.getAnnoucement();
   }
 
