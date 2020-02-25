@@ -44,6 +44,7 @@ export class MenuPage implements OnInit {
     /* this.userService.getAnimation().then((val)=>{
       this.animation = val;
     }); */
+    this.animation = 'fade-in-bottom';
 
     this.translate.get(["SELECT_OPTION","LOGOUT_APP","CANCEL_TITLE"])
     .subscribe((values) => {

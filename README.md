@@ -85,6 +85,10 @@ Gist to troubleshoot issue above
 > https://gist.github.com/fnichol/867550
 
 
+##  Check updates to your dependencies
+> https://www.npmjs.com/package/npm-check-updates
+
+
 # License
 
     The MIT License (MIT)

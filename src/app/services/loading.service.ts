@@ -7,7 +7,7 @@ import { LoadingController } from '@ionic/angular';
 export class LoadingService {
 
   loader : any = null;
-  isLoading = false;
+  show = false;
 
   constructor(public loadingController: LoadingController) {}
 
@@ -19,13 +19,16 @@ export class LoadingService {
   }
 
   async showLoader() {
+    this.show = true;
     this.createLoading().then(a => {
       this.loader.present();
     })
   }
 
   async hideLoader() {
-    this.loader.dismiss();
-  } 
+    if (this.show) {
+      this.loader.dismiss();
+    }
+  }
 
 }
